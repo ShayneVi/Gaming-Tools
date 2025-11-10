@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Granny Escape Together",
+    "appId": "0",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Paint the Town Red",
+    "appId": "337320",
+    "status": "works",
+    "notes": "LAN play confirmed. Online play works with Steam servers.",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Mimesis",
+    "appId": "0",
+    "status": "works",
+    "notes": "Multiplayer working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Hearts of Iron IV",
+    "appId": "394360",
+    "status": "works",
+    "notes": "Multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "South Park: Snow Day",
+    "appId": "2599080",
+    "status": "works",
+    "notes": "Online functionality confirmed",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Escape Simulator",
+    "appId": "1435790",
+    "status": "works",
+    "notes": "Multiplayer works perfectly",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Stellaris",
+    "appId": "281990",
+    "status": "works",
+    "notes": "Multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Swapmeat",
+    "appId": "0",
+    "status": "works",
+    "notes": "Works as expected",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Europa Universalis IV",
+    "appId": "236850",
+    "status": "works",
+    "notes": "Multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Veins",
+    "appId": "0",
+    "status": "works",
+    "notes": "Online features working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Tavern Keeper",
+    "appId": "0",
+    "status": "works",
+    "notes": "Works correctly",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Streets of Rage 4",
+    "appId": "985890",
+    "status": "works",
+    "notes": "Multiplayer working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Inzoi",
+    "appId": "0",
+    "status": "fails",
+    "notes": "Does not work with current version",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Sons of the Forest",
+    "appId": "1326470",
+    "status": "fails",
+    "notes": "Incompatible with Unsteam",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "PEAK",
+    "appId": "0",
+    "status": "fails",
+    "notes": "Not working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "FBC: Fireworks",
+    "appId": "0",
+    "status": "fails",
+    "notes": "Does not work",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "For the King 2",
+    "appId": "1676840",
+    "status": "fails",
+    "notes": "Not compatible",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "American Truck Simulator",
+    "appId": "270880",
+    "status": "fails",
+    "notes": "Multiplayer not working with Unsteam",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Grounded",
+    "appId": "962130",
+    "status": "fails",
+    "notes": "Does not work",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Dying Light",
+    "appId": "239140",
+    "status": "fails",
+    "notes": "Incompatible",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Warhammer: Darktide",
+    "appId": "1361210",
+    "status": "fails",
+    "notes": "Not working with Unsteam",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Warhammer 40,000: Rogue Trader",
+    "appId": "2186680",
+    "status": "fails",
+    "notes": "Not compatible",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Abiotic Factor",
+    "appId": "427410",
+    "status": "fails",
+    "notes": "Does not work",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Phasmophobia",
+    "appId": "739630",
+    "status": "fails",
+    "notes": "Not working",
+    "lastTested": "2025-11-10"
+  }
+]
