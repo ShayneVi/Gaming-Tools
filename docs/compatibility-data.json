@@ -1,7 +1,70 @@
 [
   {
     "name": "Granny Escape Together",
-    "appId": "0",
+    "appId": "3070520",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Store Wars",
+    "appId": "3213600",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Necesse",
+    "appId": "1169040",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-10"
+  }
+  {
+    "name": "Among Us",
+    "appId": "945360",
+    "status": "fails",
+    "notes": "3rd party connection to Among Us's own servers",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Easy Red 2",
+    "appId": "1324780",
+    "status": "fails",
+    "notes": "Dedicated servers",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Powerwash Simulator 2",
+    "appId": "2968420",
+    "status": "fails",
+    "notes": "",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Species: Unknown",
+    "appId": "2747330",
+    "status": "fails",
+    "notes": "",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Retail Simulator",
+    "appId": "3203280",
+    "status": "fails",
+    "notes": "Uses dedicated servers",
+    "lastTested": "2025-11-10"
+  },
+  {
+    "name": "Biped 2",
+    "appId": "2560240",
+    "status": "fails",
+    "notes": "3rd party connection to EOS for online",
+    "lastTested": "2025-11-10"
+  }
+  {
+    "name": "Resident Evil 5",
+    "appId": "21690",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
     "lastTested": "2025-11-10"
