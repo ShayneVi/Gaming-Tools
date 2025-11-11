@@ -21,6 +21,48 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "Escape Simulator",
+    "appId": "1435790",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "A World of Keflings",
+    "appId": "3238580",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "Card Shop Simulator Multiplayer",
+    "appId": "3569500",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "Roboquest",
+    "appId": "692890",
+    "status": "fails",
+    "notes": "Uses Epic Game store for online",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "Jump Space",
+    "appId": "1757300",
+    "status": "fails",
+    "notes": "",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "Ready or Not",
+    "appId": "1144200",
+    "status": "fails",
+    "notes": "",
+    "lastTested": "2025-11-11"
+  },
+  {
     "name": "Escape the Backrooms",
     "appId": "1943950",
     "status": "works",
@@ -45,7 +87,7 @@
     "name": "Among Us",
     "appId": "945360",
     "status": "fails",
-    "notes": "3rd party connection to Among Us's own servers",
+    "notes": "Message me to be able to play this game online.",
     "lastTested": "2025-11-10"
   },
   {
@@ -80,7 +122,7 @@
     "name": "Biped 2",
     "appId": "2560240",
     "status": "fails",
-    "notes": "3rd party connection to EOS for online",
+    "notes": "3rd party connection to Epic game store for online",
     "lastTested": "2025-11-10"
   },
   {

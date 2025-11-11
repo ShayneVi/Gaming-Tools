@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goldberg & Nucleus Gaming Guide - GlobalFix</title>
+    <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <span class="brand-icon">🎮</span>
+                <span class="brand-text">GlobalFix Guide</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="compatibility.html">Compatibility</a>
+                <a href="guide.html" class="active">Gaming Guide</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Complete Gaming Guide</h1>
+            <p class="hero-subtitle">Goldberg Emulator, ZeroTier VLAN & Nucleus Coop</p>
+            <p class="hero-description">Master online and local multiplayer gaming with comprehensive tutorials and troubleshooting</p>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section class="quick-nav">
+        <div class="container">
+            <h2>Quick Start</h2>
+            <div class="quick-nav-grid">
+                <div class="quick-nav-card" onclick="scrollToSection('goldberg-zerotier')">
+                    <div class="card-icon">🌐</div>
+                    <h3>Online Play</h3>
+                    <p>Goldberg + ZeroTier for internet play with CGNAT</p>
+                </div>
+                <div class="quick-nav-card" onclick="scrollToSection('nucleus-coop')">
+                    <div class="card-icon">🎮</div>
+                    <h3>Split-Screen</h3>
+                    <p>Nucleus Coop for local multiplayer on one PC</p>
+                </div>
+                <div class="quick-nav-card" onclick="scrollToSection('troubleshooting')">
+                    <div class="card-icon">🔧</div>
+                    <h3>Troubleshooting</h3>
+                    <p>Fix common issues and problems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Table of Contents -->
+        <aside class="toc">
+            <div class="toc-header">
+                <h3>Table of Contents</h3>
+            </div>
+            <nav class="toc-nav">
+                <div class="toc-section">
+                    <a href="#goldberg-zerotier" class="toc-title">Goldberg + ZeroTier</a>
+                    <a href="#cgnat-explained" class="toc-item">Understanding CGNAT</a>
+                    <a href="#goldberg-works" class="toc-item">How Goldberg Works</a>
+                    <a href="#zerotier-setup" class="toc-item">ZeroTier Setup</a>
+                    <a href="#goldberg-setup" class="toc-item">Goldberg Setup</a>
+                    <a href="#vlan-config" class="toc-item">VLAN Configuration</a>
+                    <a href="#lobby-connect" class="toc-item">Lobby Connect Tool</a>
+                </div>
+                <div class="toc-section">
+                    <a href="#nucleus-coop" class="toc-title">Nucleus Coop</a>
+                    <a href="#nucleus-what" class="toc-item">What is Nucleus Coop</a>
+                    <a href="#nucleus-install" class="toc-item">Installation Guide</a>
+                    <a href="#nucleus-setup" class="toc-item">Setting Up Games</a>
+                    <a href="#nucleus-controllers" class="toc-item">Controller Configuration</a>
+                    <a href="#nucleus-optimize" class="toc-item">Performance Tips</a>
+                </div>
+                <div class="toc-section">
+                    <a href="#troubleshooting" class="toc-title">Troubleshooting</a>
+                    <a href="#trouble-goldberg" class="toc-item">Goldberg Issues</a>
+                    <a href="#trouble-nucleus" class="toc-item">Nucleus Issues</a>
+                </div>
+                <div class="toc-section">
+                    <a href="#resources" class="toc-title">Resources</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- SECTION 1: GOLDBERG + ZEROTIER -->
+            <section id="goldberg-zerotier" class="section">
+                <h1>Section 1: Goldberg Emulator + ZeroTier VLAN</h1>
+                <p class="section-intro">Play games over the internet even with CGNAT connections by using Goldberg Steam emulator combined with ZeroTier's virtual LAN technology.</p>
+
+                <!-- Understanding CGNAT -->
+                <article id="cgnat-explained" class="article">
+                    <h2>1.1 Understanding CGNAT (Why Port Forwarding Fails)</h2>
+
+                    <div class="info-box info">
+                        <h4>What is CGNAT?</h4>
+                        <p><strong>CGNAT</strong> = Carrier-Grade Network Address Translation</p>
+                        <p>Your ISP shares one public IP address among MANY customers. Think of it like an apartment building with one street address but many units.</p>
+                    </div>
+
+                    <h3>Your Situation with CGNAT:</h3>
+                    <ul>
+                        <li>Your router shows WAN IP: <code>10.194.x.x</code> or <code>192.168.x.x</code></li>
+                        <li>Your actual public IP: <code>204.237.x.x</code></li>
+                        <li>These are DIFFERENT = You have CGNAT</li>
+                        <li><strong>Result:</strong> Port forwarding CANNOT work</li>
+                    </ul>
+
+                    <h3>Why This Breaks Gaming:</h3>
+                    <p>Traditional multiplayer hosting requires:</p>
+                    <ol>
+                        <li>You open ports on your router (port forwarding)</li>
+                        <li>Friends connect to your public IP</li>
+                        <li>Router forwards traffic to your PC</li>
+                    </ol>
+
+                    <div class="info-box warning">
+                        <h4>With CGNAT:</h4>
+                        <ol>
+                            <li>You CAN open ports on your router ✓</li>
+                            <li>Friends connect to public IP ✓</li>
+                            <li>ISP's CGNAT blocks the traffic ✗ <strong>FAILS</strong></li>
+                        </ol>
+                        <p>The ISP has ANOTHER router/NAT before yours that you can't control!</p>
+                    </div>
+
+                    <div class="info-box success">
+                        <h4>The Solution: ZeroTier + Goldberg</h4>
+                        <p>Both bypass the need for port forwarding by using <strong>OUTBOUND connections only</strong>.</p>
+                    </div>
+                </article>
+
+                <!-- How Goldberg Works -->
+                <article id="goldberg-works" class="article">
+                    <h2>1.2 How Goldberg Emulator Works</h2>
+
+                    <h3>What Goldberg Does:</h3>
+                    <ul>
+                        <li>Replaces Steam's API files (steam_api.dll)</li>
+                        <li>Emulates Steam's multiplayer features</li>
+                        <li>Enables LAN play without Steam running</li>
+                        <li>Allows multiple instances per game</li>
+                    </ul>
+
+                    <h3>Key Concepts:</h3>
+
+                    <div class="concept-box">
+                        <h4>LISTEN PORT (Local Port):</h4>
+                        <ul>
+                            <li>Goldberg listens on a UDP/TCP port on YOUR computer</li>
+                            <li>Default varies, configured in <code>listen_port.txt</code></li>
+                            <li>This is LOCAL to your PC, NOT your router</li>
+                            <li>All players must use the SAME port number</li>
+                            <li>Example: Everyone uses port <code>47584</code></li>
+                        </ul>
+                        <div class="info-box info">
+                            <p><strong>Important:</strong> This is NOT the same as "opening ports" on your router! This port is on your computer's network adapter (local), not facing the internet. CGNAT doesn't affect local ports!</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>BROADCAST DISCOVERY:</h4>
+                        <ul>
+                            <li>Goldberg sends "broadcast packets" to find other players</li>
+                            <li>Normal: Broadcasts to <code>255.255.255.255</code> (local network only)</li>
+                            <li>With <code>custom_broadcasts.txt</code>: Sends to specific IPs you list</li>
+                            <li>This is how players discover each other</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>CUSTOM_BROADCASTS.TXT (Critical for VLAN):</h4>
+                        <p><strong>Location:</strong> <code>%appdata%\Goldberg SteamEmu Saves\settings\custom_broadcasts.txt</code></p>
+                        <p><strong>Purpose:</strong> Tell Goldberg exactly where your friends are</p>
+
+                        <div class="code-block">
+                            <pre>172.28.145.82
+172.28.145.93
+172.28.145.104</pre>
+                        </div>
+
+                        <p>This makes Goldberg send discovery packets to these IPs instead of just broadcasting locally. <strong>ESSENTIAL for ZeroTier/VLAN play!</strong></p>
+                    </div>
+                </article>
+
+                <!-- ZeroTier Setup -->
+                <article id="zerotier-setup" class="article">
+                    <h2>1.3 ZeroTier Setup Guide</h2>
+
+                    <div class="info-box info">
+                        <h4>How ZeroTier Solves CGNAT:</h4>
+                        <ul>
+                            <li>Creates a virtual network adapter on your PC</li>
+                            <li>Gives you a virtual IP (like <code>172.28.x.x</code>)</li>
+                            <li>All players on same ZeroTier network can see each other</li>
+                            <li>Works by making OUTBOUND connections (bypasses CGNAT!)</li>
+                        </ul>
+                        <p><strong>The Magic:</strong> Your PC → (outbound) → ZeroTier servers → Friend's PC ← (outbound)</p>
+                        <p>Both connections are OUTBOUND from each person's perspective! No inbound connections needed = CGNAT doesn't block it!</p>
+                    </div>
+
+                    <h3>Step-by-Step Setup:</h3>
+
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Create ZeroTier Account</h4>
+                            <ol>
+                                <li>Go to <a href="https://my.zerotier.com/" target="_blank">https://my.zerotier.com/</a></li>
+                                <li>Click "Sign Up"</li>
+                                <li>Use Google/GitHub or email</li>
+                                <li>Verify email if needed</li>
+                                <li>Log in</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Create Network</h4>
+                            <ol>
+                                <li>Click "Create A Network"</li>
+                                <li>Note the 16-digit Network ID (example: <code>a0cbf4b62af04ee1</code>)</li>
+                                <li>Click on network to configure</li>
+                                <li>Give it a name (optional): "Gaming Network"</li>
+                                <li>Keep "Access Control" as "Private"</li>
+                                <li>Remember this Network ID - you'll share with friends</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Install ZeroTier</h4>
+                            <ol>
+                                <li>Download from <a href="https://www.zerotier.com/download/" target="_blank">https://www.zerotier.com/download/</a></li>
+                                <li>Run installer</li>
+                                <li>Allow Windows Firewall (check both Private and Public)</li>
+                                <li>ZeroTier runs in system tray (bottom-right)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Join Your Network</h4>
+                            <ol>
+                                <li>Right-click ZeroTier icon in system tray</li>
+                                <li>Select "Join Network..."</li>
+                                <li>Enter your Network ID: <code>a0cbf4b62af04ee1</code></li>
+                                <li>Click "Join"</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Authorize Yourself</h4>
+                            <ol>
+                                <li>Go back to ZeroTier Central (<a href="https://my.zerotier.com" target="_blank">my.zerotier.com</a>)</li>
+                                <li>Refresh your network page</li>
+                                <li>Scroll to "Members" section</li>
+                                <li>Find your PC (shows hostname)</li>
+                                <li>Check the "Auth?" checkbox</li>
+                                <li>Note your assigned IP (example: <code>172.28.147.83</code>) - <strong>WRITE THIS DOWN!</strong></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Verify Connection & Test Ping</h4>
+                            <ol>
+                                <li>Press <kbd>Win+R</kbd>, type: <code>cmd</code>, press Enter</li>
+                                <li>Type: <code>ipconfig</code></li>
+                                <li>Look for "Ethernet adapter ZeroTier One"</li>
+                                <li>Note the IPv4 Address (should match what ZeroTier Central shows)</li>
+                            </ol>
+                            <h5 style="margin-top: 15px;">Testing Connectivity (Ping):</h5>
+                            <p>After your friends join and are authorized, test the connection:</p>
+                            <div class="code-block">
+                                <pre>ping 172.28.147.105</pre>
+                            </div>
+                            <p>You should see replies like:</p>
+                            <div class="code-block">
+                                <pre>Reply from 172.28.147.105: bytes=32 time=45ms TTL=64
+Reply from 172.28.147.105: bytes=32 time=43ms TTL=64</pre>
+                            </div>
+                            <div class="info-box warning">
+                                <p><strong>If "Request timed out":</strong></p>
+                                <ul>
+                                    <li>Wait 2 minutes and try again (network needs time)</li>
+                                    <li>Check Windows Firewall settings</li>
+                                    <li>Verify friend is authorized in ZeroTier Central</li>
+                                    <li>Make sure both PCs are connected to ZeroTier</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>Invite Friends</h4>
+                            <ol>
+                                <li>Share Network ID with friends</li>
+                                <li>Friends repeat Steps 3-6</li>
+                                <li>You authorize each friend in ZeroTier Central (Step 5)</li>
+                                <li>Collect everyone's ZeroTier IPs:
+                                    <ul>
+                                        <li>You: <code>172.28.147.83</code></li>
+                                        <li>Friend A: <code>172.28.147.105</code></li>
+                                        <li>Friend B: <code>172.28.147.222</code></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Goldberg Setup -->
+                <article id="goldberg-setup" class="article">
+                    <h2>1.4 Goldberg Emulator Setup</h2>
+
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Download Goldberg</h4>
+                            <ol>
+                                <li>Go to <a href="https://mr_goldberg.gitlab.io/goldberg_emulator/" target="_blank">https://mr_goldberg.gitlab.io/goldberg_emulator/</a></li>
+                                <li>Click "Latest Build"</li>
+                                <li>Save the zip file</li>
+                                <li>Extract to Desktop</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Find Game's Steam API</h4>
+                            <ol>
+                                <li>Open Steam</li>
+                                <li>Right-click game → Properties → Local Files → Browse</li>
+                                <li>Search for: <code>steam_api.dll</code> or <code>steam_api64.dll</code></li>
+                                <li>Usually in game root or "bin" folder</li>
+                                <li><strong>BACKUP</strong> the original (copy and rename to <code>steam_api.dll.backup</code>)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Get Steam App ID</h4>
+                            <ol>
+                                <li>Go to <a href="https://steamdb.info/" target="_blank">https://steamdb.info/</a></li>
+                                <li>Search your game</li>
+                                <li>Note the App ID number (example: Valheim = <code>892970</code>)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Install Goldberg</h4>
+                            <ol>
+                                <li>Copy appropriate DLL from Goldberg folder:
+                                    <ul>
+                                        <li>32-bit game: <code>steam_api.dll</code></li>
+                                        <li>64-bit game: <code>steam_api64.dll</code></li>
+                                    </ul>
+                                </li>
+                                <li>Paste into game folder (replace original)</li>
+                                <li>Create new text file: <code>steam_appid.txt</code></li>
+                                <li>Put ONLY the App ID inside: <code>892970</code></li>
+                                <li>Save in same folder as the DLL</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Test</h4>
+                            <ol>
+                                <li>Close Steam completely</li>
+                                <li>Run game from .exe (not Steam)</li>
+                                <li>Game should launch!</li>
+                            </ol>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- VLAN Configuration -->
+                <article id="vlan-config" class="article">
+                    <h2>1.5 Configure for VLAN Play</h2>
+
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Configure Your Identity</h4>
+                            <ol>
+                                <li>Press <kbd>Win+R</kbd>, type: <code>%appdata%</code>, press Enter</li>
+                                <li>Navigate to: <code>Goldberg SteamEmu Saves\settings\</code></li>
+                                <li>Edit <code>account_name.txt</code>: Put your name (Player1)</li>
+                                <li>Edit <code>user_steam_id.txt</code>: Keep the default number</li>
+                                <li>Don't change <code>listen_port.txt</code> (or ensure all players match!)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Create custom_broadcasts.txt (CRITICAL!)</h4>
+                            <ol>
+                                <li>In same settings folder</li>
+                                <li>Create new text file: <code>custom_broadcasts.txt</code></li>
+                                <li>Add your FRIENDS' ZeroTier IPs (NOT your own):</li>
+                            </ol>
+                            <div class="code-block">
+                                <pre>172.28.147.105
+172.28.147.222</pre>
+                            </div>
+                            <ol start="4">
+                                <li>Save and close</li>
+                                <li>One IP per line, no extra spaces!</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Friends Do The Same</h4>
+                            <p>Each friend needs to:</p>
+                            <ol>
+                                <li>Install Goldberg (previous section)</li>
+                                <li>Configure identity with UNIQUE Steam ID:
+                                    <ul>
+                                        <li>Friend A: <code>user_steam_id.txt</code> = increase last digit by 1</li>
+                                        <li>Friend B: <code>user_steam_id.txt</code> = increase last digit by 2</li>
+                                    </ul>
+                                </li>
+                                <li>Create their own <code>custom_broadcasts.txt</code> with OTHER players' IPs</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Launch and Connect</h4>
+                            <ol>
+                                <li>Everyone launches game from .exe</li>
+                                <li>Go to multiplayer menu</li>
+                                <li>Host creates a game/server</li>
+                                <li>Others should see it in LAN/server browser</li>
+                                <li>Join and play!</li>
+                            </ol>
+                            <div class="info-box warning">
+                                <p><strong>If you don't see servers:</strong></p>
+                                <ul>
+                                    <li>Wait 30-60 seconds</li>
+                                    <li>Try using lobby_connect.exe (see next section)</li>
+                                    <li>Verify <code>custom_broadcasts.txt</code> is correct</li>
+                                    <li>Check Windows Firewall allows game</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lobby Connect Tool -->
+                <article id="lobby-connect" class="article">
+                    <h2>1.6 LOBBY_CONNECT Tool (For Special Games)</h2>
+
+                    <div class="info-box info">
+                        <h4>What is LOBBY_CONNECT?</h4>
+                        <p>A special tool included with Goldberg that helps you discover and join game lobbies when the game has no LAN browser menu.</p>
+                    </div>
+
+                    <h3>When You Need It:</h3>
+                    <ul>
+                        <li>Game only has "Invite Steam Friends" option</li>
+                        <li>No LAN server browser in multiplayer menu</li>
+                        <li>Can't manually enter IP addresses</li>
+                        <li>Game uses Steam's lobby system exclusively</li>
+                    </ul>
+
+                    <h3>How It Works:</h3>
+                    <ol>
+                        <li>Host creates a lobby in-game</li>
+                        <li>Host's Goldberg broadcasts lobby info via custom_broadcasts</li>
+                        <li>You run <code>lobby_connect.exe</code> (before launching game)</li>
+                        <li>lobby_connect discovers host's lobby on the network</li>
+                        <li>Shows you list of available lobbies</li>
+                        <li>You select the lobby</li>
+                        <li>lobby_connect launches your game with "+connect_lobby" command</li>
+                        <li>Game automatically joins the lobby!</li>
+                    </ol>
+
+                    <h3>Step-by-Step Usage:</h3>
+
+                    <div class="two-column-guide">
+                        <div class="column">
+                            <h4>HOST (Player creating lobby):</h4>
+                            <ol>
+                                <li>Launch game with Goldberg</li>
+                                <li>Go to multiplayer menu</li>
+                                <li>Create/Host a game</li>
+                                <li>Make sure it's PUBLIC (not invite-only)</li>
+                                <li>Wait in lobby</li>
+                                <li>Tell friends you're ready</li>
+                            </ol>
+                        </div>
+                        <div class="column">
+                            <h4>JOINER (Player connecting):</h4>
+                            <ol>
+                                <li>Make sure game is CLOSED</li>
+                                <li>Navigate to: <code>[Goldberg folder]\lobby_connect\</code></li>
+                                <li>Double-click <code>lobby_connect.exe</code></li>
+                                <li>Wait 2-3 seconds while it discovers lobbies</li>
+                                <li>You'll see a menu with available lobbies</li>
+                                <li>Type the number of the lobby to join</li>
+                                <li>Press Enter</li>
+                                <li>Browse to your game's .exe file when prompted</li>
+                                <li>Click Open</li>
+                                <li>Game launches and AUTO-CONNECTS to lobby!</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <h3>Troubleshooting LOBBY_CONNECT:</h3>
+                    <div class="troubleshoot-list">
+                        <div class="trouble-item">
+                            <h4>"People on the network: 0"</h4>
+                            <ul>
+                                <li>Host hasn't created lobby yet (wait for host)</li>
+                                <li><code>custom_broadcasts.txt</code> not configured (add host's IP)</li>
+                                <li>Can't ping host (fix ZeroTier connection first)</li>
+                            </ul>
+                        </div>
+                        <div class="trouble-item">
+                            <h4>Shows people but no "command line"</h4>
+                            <ul>
+                                <li>Host hasn't created lobby yet (host needs to actually host)</li>
+                                <li>Lobby is invite-only (host: make it public)</li>
+                                <li>Run lobby_connect AFTER host creates lobby</li>
+                            </ul>
+                        </div>
+                        <div class="trouble-item">
+                            <h4>"Failed to initialize Steam API"</h4>
+                            <ul>
+                                <li>Need <code>steam_appid.txt</code> in lobby_connect folder</li>
+                                <li>Copy your game's <code>steam_appid.txt</code> to the lobby_connect folder</li>
+                            </ul>
+                        </div>
+                        <div class="trouble-item">
+                            <h4>Game launches but doesn't connect</h4>
+                            <ul>
+                                <li>Wrong .exe selected (try different exe in game folder)</li>
+                                <li>Game doesn't support +connect_lobby command</li>
+                                <li>Host's lobby closed before you joined</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- SECTION 2: NUCLEUS COOP -->
+            <section id="nucleus-coop" class="section">
+                <h1>Section 2: Nucleus Coop (Local Split-Screen)</h1>
+                <p class="section-intro">Enable split-screen co-op on PC games that don't natively support it, allowing multiple players on one PC with separate controllers.</p>
+
+                <!-- What is Nucleus Coop -->
+                <article id="nucleus-what" class="article">
+                    <h2>2.1 What is Nucleus Coop</h2>
+
+                    <p>Nucleus Coop is FREE software that enables split-screen co-op on PC games that don't natively support it.</p>
+
+                    <h3>What It Does:</h3>
+                    <ul>
+                        <li>Runs multiple instances of the same game</li>
+                        <li>Each instance gets its own controller</li>
+                        <li>Windows are arranged in split-screen layout</li>
+                        <li>Games connect via LAN/localhost</li>
+                    </ul>
+
+                    <h3>What It Doesn't Do:</h3>
+                    <ul>
+                        <li>Can't add multiplayer to single-player-only games</li>
+                        <li>Doesn't work on Xbox Game Pass games (DRM)</li>
+                        <li>Can't bypass strong anti-cheat</li>
+                    </ul>
+
+                    <div class="info-box success">
+                        <h4>Performance Expectations:</h4>
+                        <p>With a modern gaming PC (Ryzen 9, 32GB RAM, RTX 3080 or similar):</p>
+                        <ul>
+                            <li><strong>2 players:</strong> High settings, 60+ FPS each</li>
+                            <li><strong>3 players:</strong> Medium settings, 60 FPS each</li>
+                            <li><strong>4 players:</strong> Low-Medium settings, 50-60 FPS each</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Installation Guide -->
+                <article id="nucleus-install" class="article">
+                    <h2>2.2 Installation Guide</h2>
+
+                    <div class="info-box info">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>.NET Framework 4.7.2+ (Windows 10/11 has this)</li>
+                            <li>Visual C++ 2015-2019 Redistributable (x86 AND x64)</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Download Prerequisites</h4>
+                            <p>Get Visual C++ Redistributables:</p>
+                            <ul>
+                                <li>x86: <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Download x86</a></li>
+                                <li>x64: <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Download x64</a></li>
+                            </ul>
+                            <p>Install BOTH, restart if prompted</p>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Download Nucleus Coop</h4>
+                            <ol>
+                                <li>Go to: <a href="https://github.com/SplitScreen-Me/splitscreenme-nucleus/releases" target="_blank">Nucleus Coop Releases</a></li>
+                                <li>Download: <code>NucleusCoopApp.zip</code> (latest release)</li>
+                                <li>Extract to: <code>C:\NucleusCoop</code> (NOT Program Files!)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Antivirus Exception</h4>
+                            <ol>
+                                <li>Open Windows Security</li>
+                                <li>Virus & threat protection → Manage settings</li>
+                                <li>Exclusions → Add folder</li>
+                                <li>Add: <code>C:\NucleusCoop</code></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>First Launch</h4>
+                            <ol>
+                                <li>Right-click <code>NucleusCoop.exe</code> → Properties</li>
+                                <li>Compatibility → Run as administrator</li>
+                                <li>Launch <code>NucleusCoop.exe</code></li>
+                            </ol>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Setting Up Games -->
+                <article id="nucleus-setup" class="article">
+                    <h2>2.3 Setting Up Your First Game</h2>
+
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Check Compatibility</h4>
+                            <p>Go to <a href="https://hub.splitscreen.me/" target="_blank">https://hub.splitscreen.me/</a></p>
+                            <p>Search for your game - must have a "handler"</p>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Add Game</h4>
+                            <ol>
+                                <li>In Nucleus, click "Add New Games" (+ icon)</li>
+                                <li>Search for your game</li>
+                                <li>Click game cover → Read handler notes!</li>
+                                <li>Click "Download Handler"</li>
+                                <li>Browse to game .exe when prompted</li>
+                                <li>Add game</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Configure Controllers</h4>
+                            <ol>
+                                <li>Connect all controllers (before launching Nucleus)</li>
+                                <li>Test in <code>joy.cpl</code> (Win+R → joy.cpl)</li>
+                                <li>Controllers appear at top of Nucleus window</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Set Layout</h4>
+                            <ol>
+                                <li>Select split-screen layout (2-player, 3-player, 4-player)</li>
+                                <li>Drag controller icons to screen sections</li>
+                                <li>Each section = one player</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Launch!</h4>
+                            <ol>
+                                <li>Click Play arrow</li>
+                                <li>Wait (first time takes 1-2 minutes)</li>
+                                <li>Games launch and arrange in split-screen</li>
+                                <li>Navigate menus to connect instances</li>
+                                <li>Play!</li>
+                            </ol>
+                            <p><strong>To End Session:</strong> Press <kbd>Ctrl+Q</kbd> in Nucleus OR exit games normally</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Controllers -->
+                <article id="nucleus-controllers" class="article">
+                    <h2>2.4 Controller Configuration</h2>
+
+                    <h3>Testing Controllers:</h3>
+                    <ol>
+                        <li>Press <kbd>Win+R</kbd>, type: <code>joy.cpl</code>, press Enter</li>
+                        <li>Test each controller's buttons and sticks</li>
+                        <li>Ensure all controllers are detected before launching Nucleus</li>
+                    </ol>
+
+                    <h3>Supported Controller Types:</h3>
+                    <ul>
+                        <li><strong>Xbox Controllers:</strong> Works natively (best compatibility)</li>
+                        <li><strong>PlayStation Controllers:</strong> Use DS4Windows or Steam Input</li>
+                        <li><strong>Generic Controllers:</strong> May require additional configuration</li>
+                    </ul>
+
+                    <div class="info-box info">
+                        <p><strong>Tip:</strong> XInput controllers (Xbox-style) work best with Nucleus Coop. If using other controllers, consider using software to emulate XInput.</p>
+                    </div>
+                </article>
+
+                <!-- Performance -->
+                <article id="nucleus-optimize" class="article">
+                    <h2>2.5 Performance Optimization</h2>
+
+                    <h3>Recommended Settings for 4 Instances:</h3>
+                    <ul>
+                        <li><strong>Resolution:</strong> 1920×1080 per instance (or 1280×720 for better FPS)</li>
+                        <li><strong>Graphics:</strong> Low to Medium</li>
+                        <li><strong>Shadows:</strong> OFF (biggest performance boost!)</li>
+                        <li><strong>Effects:</strong> Low</li>
+                        <li><strong>Anti-Aliasing:</strong> OFF</li>
+                        <li><strong>V-Sync:</strong> OFF</li>
+                        <li><strong>Frame Limit:</strong> 60 FPS</li>
+                    </ul>
+
+                    <h3>Before Playing:</h3>
+                    <div class="checklist">
+                        <label><input type="checkbox"> Close Chrome/Discord/OBS</label>
+                        <label><input type="checkbox"> Disable Windows Update</label>
+                        <label><input type="checkbox"> Set Power Plan to High Performance</label>
+                        <label><input type="checkbox"> Run Nucleus as administrator</label>
+                    </div>
+
+                    <div class="info-box success">
+                        <h4>Expected Performance (Modern Gaming PC):</h4>
+                        <ul>
+                            <li>RAM Usage: 20-28GB (32GB system)</li>
+                            <li>VRAM Usage: 6-8GB (10GB+ GPU)</li>
+                            <li>CPU Usage: Well distributed across cores</li>
+                            <li>Result: Smooth 60 FPS per instance at low settings!</li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <!-- SECTION 3: TROUBLESHOOTING -->
+            <section id="troubleshooting" class="section">
+                <h1>Section 3: Troubleshooting</h1>
+
+                <!-- Goldberg Troubleshooting -->
+                <article id="trouble-goldberg" class="article">
+                    <h2>3.1 Goldberg Connection Issues</h2>
+
+                    <div class="flowchart">
+                        <h3>Connection Troubleshooting Flowchart:</h3>
+
+                        <div class="flow-step">
+                            <p><strong>Can you ping friend's ZeroTier IP?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Fix ZeroTier connection first (Section 1.3)</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Does game launch without Steam?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Fix Goldberg installation (Section 1.4)</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Is custom_broadcasts.txt correct?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-unsure">UNSURE</span>
+                                    <p>→ Check file exists, has correct IPs (Section 1.5)</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Do all players have unique Steam IDs?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Each must be different (Section 1.5)</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Same listen_port.txt for everyone?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Must match across all players</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Try lobby_connect.exe (Section 1.6)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Nucleus Troubleshooting -->
+                <article id="trouble-nucleus" class="article">
+                    <h2>3.2 Nucleus Coop Issues</h2>
+
+                    <div class="flowchart">
+                        <h3>Nucleus Troubleshooting Flowchart:</h3>
+
+                        <div class="flow-step">
+                            <p><strong>Is .NET Framework installed?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Install .NET 4.7.2+</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Visual C++ Redistributable installed?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Install x86 AND x64 versions (Section 2.2)</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Running as administrator?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Right-click → Run as admin</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Antivirus blocking?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Add C:\NucleusCoop to exclusions</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Continue below</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <p><strong>Extracted to correct location?</strong></p>
+                            <div class="flow-options">
+                                <div class="flow-option">
+                                    <span class="badge-no">NO</span>
+                                    <p>→ Move to C:\NucleusCoop (not Program Files)</p>
+                                </div>
+                                <div class="flow-option">
+                                    <span class="badge-yes">YES</span>
+                                    <p>→ Should work now! Check Discord for help</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Common Issues:</h3>
+                    <div class="troubleshoot-list">
+                        <div class="trouble-item">
+                            <h4>Mouse stuck/locked after closing games</h4>
+                            <ul>
+                                <li>Press <kbd>END</kbd> key to unlock mouse</li>
+                                <li>Or press <kbd>Ctrl+Q</kbd> in Nucleus to properly end session</li>
+                            </ul>
+                        </div>
+                        <div class="trouble-item">
+                            <h4>Game instances don't connect to each other</h4>
+                            <ul>
+                                <li>Check Windows Firewall allows the game</li>
+                                <li>Read the handler notes for specific instructions</li>
+                                <li>Some games require manual connection via in-game menus</li>
+                            </ul>
+                        </div>
+                        <div class="trouble-item">
+                            <h4>Low FPS / Performance issues</h4>
+                            <ul>
+                                <li>Lower graphics settings to Low/Medium</li>
+                                <li>Turn OFF shadows completely</li>
+                                <li>Reduce resolution per instance</li>
+                                <li>Close background applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- SECTION 4: RESOURCES -->
+            <section id="resources" class="section">
+                <h1>Resources & Links</h1>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Goldberg Emulator</h3>
+                        <ul>
+                            <li><a href="https://mr_goldberg.gitlab.io/goldberg_emulator/" target="_blank">Official Website</a></li>
+                            <li><a href="https://gitlab.com/Mr_Goldberg/goldberg_emulator" target="_blank">GitLab Repository</a></li>
+                            <li><a href="https://steamdb.info/" target="_blank">SteamDB (for App IDs)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>ZeroTier</h3>
+                        <ul>
+                            <li><a href="https://www.zerotier.com/" target="_blank">Official Website</a></li>
+                            <li><a href="https://my.zerotier.com/" target="_blank">ZeroTier Central (Login)</a></li>
+                            <li><a href="https://www.zerotier.com/download/" target="_blank">Download ZeroTier</a></li>
+                            <li><a href="https://discuss.zerotier.com/" target="_blank">ZeroTier Forums</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Nucleus Coop</h3>
+                        <ul>
+                            <li><a href="https://www.splitscreen.me/" target="_blank">Official Website</a></li>
+                            <li><a href="https://hub.splitscreen.me/" target="_blank">Handler Hub</a></li>
+                            <li><a href="https://github.com/SplitScreen-Me/splitscreenme-nucleus" target="_blank">GitHub Repository</a></li>
+                            <li><a href="https://discord.gg/QDUt8HpCvr" target="_blank">Discord Community</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glossary">
+                    <h2>Quick Reference Glossary</h2>
+                    <dl>
+                        <dt>CGNAT</dt>
+                        <dd>Carrier-Grade NAT. ISP shares one public IP among many customers. Prevents port forwarding.</dd>
+
+                        <dt>Goldberg</dt>
+                        <dd>Steam API emulator. Enables LAN play without Steam.</dd>
+
+                        <dt>ZeroTier</dt>
+                        <dd>VPN that creates virtual LANs over internet.</dd>
+
+                        <dt>lobby_connect</dt>
+                        <dd>Tool to discover and join Steam lobbies via Goldberg.</dd>
+
+                        <dt>Handler</dt>
+                        <dd>JavaScript file telling Nucleus how to run a specific game.</dd>
+
+                        <dt>VLAN</dt>
+                        <dd>Virtual LAN. Makes computers on different networks appear local.</dd>
+
+                        <dt>AppID</dt>
+                        <dd>Steam's unique number for each game.</dd>
+                    </dl>
+                </div>
+
+                <div class="quick-commands">
+                    <h2>Quick Commands Reference</h2>
+                    <div class="command-grid">
+                        <div class="command-item">
+                            <code>ipconfig</code>
+                            <p>Check ZeroTier adapter</p>
+                        </div>
+                        <div class="command-item">
+                            <code>ping [IP]</code>
+                            <p>Test connectivity</p>
+                        </div>
+                        <div class="command-item">
+                            <code>Ctrl + Q</code>
+                            <p>End Nucleus session</p>
+                        </div>
+                        <div class="command-item">
+                            <code>END</code>
+                            <p>Fix mouse after Nucleus</p>
+                        </div>
+                        <div class="command-item">
+                            <code>joy.cpl</code>
+                            <p>Test controllers</p>
+                        </div>
+                        <div class="command-item">
+                            <code>%appdata%</code>
+                            <p>Access Goldberg settings</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This guide covers Goldberg Steam Emulator, ZeroTier VLAN, and Nucleus Coop for enhanced gaming experiences.</p>
+            <p class="footer-note">Always use these tools responsibly and only with games you own.</p>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h3>Need Help? Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div class="contact-details">
+                            <strong>Email</strong>
+                            <a href="mailto:fixitf759@gmail.com">fixitf759@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💬</span>
+                        <div class="contact-details">
+                            <strong>Discord</strong>
+                            <span>lindong6631</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="guide.js"></script>
+</body>
+</html>
