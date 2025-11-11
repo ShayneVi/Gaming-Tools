@@ -19,7 +19,7 @@
     "status": "works",
     "notes": "Online multiplayer confirmed working",
     "lastTested": "2025-11-10"
-  }
+  },
   {
     "name": "Among Us",
     "appId": "945360",
@@ -61,7 +61,7 @@
     "status": "fails",
     "notes": "3rd party connection to EOS for online",
     "lastTested": "2025-11-10"
-  }
+  },
   {
     "name": "Resident Evil 5",
     "appId": "21690",

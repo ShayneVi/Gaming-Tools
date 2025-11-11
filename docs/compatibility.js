@@ -1,40 +1,11 @@
-// Compatibility data - embedded directly to work with file:// protocol (no CORS issues)
-let compatibilityData = [
-  {"name": "Granny Escape Together", "appId": "0", "status": "works", "notes": "Online multiplayer confirmed working", "lastTested": "2025-11-10"},
-  {"name": "Paint the Town Red", "appId": "337320", "status": "works", "notes": "LAN play confirmed. Online play works with Steam servers.", "lastTested": "2025-11-10"},
-  {"name": "Mimesis", "appId": "0", "status": "works", "notes": "Multiplayer working", "lastTested": "2025-11-10"},
-  {"name": "Hearts of Iron IV", "appId": "394360", "status": "works", "notes": "Multiplayer confirmed working", "lastTested": "2025-11-10"},
-  {"name": "South Park: Snow Day", "appId": "2599080", "status": "works", "notes": "Online functionality confirmed", "lastTested": "2025-11-10"},
-  {"name": "Escape Simulator", "appId": "1435790", "status": "works", "notes": "Multiplayer works perfectly", "lastTested": "2025-11-10"},
-  {"name": "Stellaris", "appId": "281990", "status": "works", "notes": "Multiplayer confirmed working", "lastTested": "2025-11-10"},
-  {"name": "Swapmeat", "appId": "0", "status": "works", "notes": "Works as expected", "lastTested": "2025-11-10"},
-  {"name": "Europa Universalis IV", "appId": "236850", "status": "works", "notes": "Multiplayer confirmed working", "lastTested": "2025-11-10"},
-  {"name": "Veins", "appId": "0", "status": "works", "notes": "Online features working", "lastTested": "2025-11-10"},
-  {"name": "Tavern Keeper", "appId": "0", "status": "works", "notes": "Works correctly", "lastTested": "2025-11-10"},
-  {"name": "Streets of Rage 4", "appId": "985890", "status": "works", "notes": "Multiplayer working", "lastTested": "2025-11-10"},
-  {"name": "Inzoi", "appId": "0", "status": "fails", "notes": "Does not work with current version", "lastTested": "2025-11-10"},
-  {"name": "Sons of the Forest", "appId": "1326470", "status": "fails", "notes": "Incompatible with Unsteam", "lastTested": "2025-11-10"},
-  {"name": "PEAK", "appId": "0", "status": "fails", "notes": "Not working", "lastTested": "2025-11-10"},
-  {"name": "FBC: Fireworks", "appId": "0", "status": "fails", "notes": "Does not work", "lastTested": "2025-11-10"},
-  {"name": "For the King 2", "appId": "1676840", "status": "fails", "notes": "Not compatible", "lastTested": "2025-11-10"},
-  {"name": "American Truck Simulator", "appId": "270880", "status": "fails", "notes": "Multiplayer not working with Unsteam", "lastTested": "2025-11-10"},
-  {"name": "Grounded", "appId": "962130", "status": "fails", "notes": "Does not work", "lastTested": "2025-11-10"},
-  {"name": "Dying Light", "appId": "239140", "status": "fails", "notes": "Incompatible", "lastTested": "2025-11-10"},
-  {"name": "Warhammer: Darktide", "appId": "1361210", "status": "fails", "notes": "Not working with Unsteam", "lastTested": "2025-11-10"},
-  {"name": "Warhammer 40,000: Rogue Trader", "appId": "2186680", "status": "fails", "notes": "Not compatible", "lastTested": "2025-11-10"},
-  {"name": "Abiotic Factor", "appId": "427410", "status": "fails", "notes": "Does not work", "lastTested": "2025-11-10"},
-  {"name": "Phasmophobia", "appId": "739630", "status": "fails", "notes": "Not working", "lastTested": "2025-11-10"}
-];
+// Compatibility data - loaded from JSON file
+let compatibilityData = [];
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', () => {
-    console.log(`✓ Using embedded compatibility data (${compatibilityData.length} games)`);
+    console.log('Loading compatibility data from JSON file...');
 
-    // Populate table and stats immediately with embedded data
-    populateTable(compatibilityData);
-    updateStats(compatibilityData);
-
-    // Try to load from JSON file as well (for web server deployment)
+    // Load from JSON file
     loadCompatibilityData();
 
     // Setup search
@@ -47,22 +18,30 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavbar();
 });
 
-// Load compatibility data from JSON file (optional - for web server deployment)
+// Load compatibility data from JSON file
 async function loadCompatibilityData() {
     try {
-        // Try to load from compatibility-data.json (will fail with CORS on file://)
         const response = await fetch('compatibility-data.json');
         if (response.ok) {
             const fetchedData = await response.json();
             compatibilityData = fetchedData;
-            console.log(`✓ Updated from compatibility-data.json (${compatibilityData.length} games)`);
+            console.log(`✓ Loaded from compatibility-data.json (${compatibilityData.length} games)`);
             populateTable(compatibilityData);
             updateStats(compatibilityData);
+        } else {
+            console.error('Failed to load compatibility-data.json');
+            showErrorMessage('Failed to load game compatibility data');
         }
     } catch (error) {
-        // Expected to fail with file:// protocol - embedded data is already loaded
-        console.log('Note: Using embedded data (JSON fetch failed due to file:// protocol or network)');
+        console.error('Error loading compatibility data:', error);
+        showErrorMessage('Error loading game compatibility data. Please refresh the page.');
     }
+}
+
+// Show error message to user
+function showErrorMessage(message) {
+    const tbody = document.getElementById('compatTableBody');
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #ef4444;">${message}</td></tr>`;
 }
 
 // Populate table with compatibility data
@@ -287,6 +266,5 @@ async function loadFromXML(xmlUrl) {
 
 // Console info
 console.log('%c📊 Unsteam Compatibility Database', 'font-size: 16px; font-weight: bold; color: #667eea;');
-console.log('Data is embedded in this file for offline use (works with file:// protocol).');
-console.log('To update: Edit the compatibilityData array at the top of compatibility.js');
-console.log('For web servers: Also update compatibility-data.json (will auto-load if available).');
+console.log('Data is loaded from compatibility-data.json');
+console.log('To update: Edit compatibility-data.json and push to GitHub - changes will appear automatically!');
