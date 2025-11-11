@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load compatibility data from JSON file
 async function loadCompatibilityData() {
     try {
-        const response = await fetch('compatibility-data.json');
+        // Add timestamp to prevent caching
+        const timestamp = new Date().getTime();
+        const response = await fetch(`compatibility-data.json?v=${timestamp}`);
         if (response.ok) {
             const fetchedData = await response.json();
             compatibilityData = fetchedData;

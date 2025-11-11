@@ -167,6 +167,34 @@ rippleStyle.textContent = `
 `;
 document.head.appendChild(rippleStyle);
 
+// Load compatibility stats dynamically
+async function loadCompatibilityStats() {
+    try {
+        // Add timestamp to prevent caching
+        const timestamp = new Date().getTime();
+        const response = await fetch(`compatibility-data.json?v=${timestamp}`);
+        if (response.ok) {
+            const data = await response.json();
+            const totalGames = data.length;
+            const workingGames = data.filter(game => game.status === 'works').length;
+
+            // Update the stats on the homepage
+            const statNumbers = document.querySelectorAll('.placeholder-stats .stat-number');
+            if (statNumbers[0]) statNumbers[0].textContent = `${totalGames}+`;
+            if (statNumbers[1]) statNumbers[1].textContent = workingGames;
+
+            console.log(`✓ Loaded compatibility stats: ${totalGames} games, ${workingGames} working`);
+        }
+    } catch (error) {
+        console.log('Could not load compatibility stats:', error);
+    }
+}
+
+// Load stats when page loads
+window.addEventListener('load', () => {
+    loadCompatibilityStats();
+});
+
 // Console message for developers
 console.log('%c👋 Hey there, developer!', 'font-size: 20px; font-weight: bold; color: #667eea;');
 console.log('%cInterested in these apps? Check them out on GitHub!', 'font-size: 14px; color: #4a5568;');
