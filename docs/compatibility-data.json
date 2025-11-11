@@ -14,6 +14,27 @@
     "lastTested": "2025-11-10"
   },
   {
+    "name": "RV There Yet?",
+    "appId": "3949040",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "Escape the Backrooms",
+    "appId": "1943950",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-11"
+  },
+  {
+    "name": "PowerWash Simulator",
+    "appId": "1290000",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working. Needs to use Steamless.",
+    "lastTested": "2025-11-11"
+  },
+  {
     "name": "Necesse",
     "appId": "1169040",
     "status": "works",
@@ -78,7 +99,7 @@
   },
   {
     "name": "Mimesis",
-    "appId": "0",
+    "appId": "2827200",
     "status": "works",
     "notes": "Multiplayer working",
     "lastTested": "2025-11-10"
@@ -113,7 +134,7 @@
   },
   {
     "name": "Swapmeat",
-    "appId": "0",
+    "appId": "2790700",
     "status": "works",
     "notes": "Works as expected",
     "lastTested": "2025-11-10"
@@ -126,15 +147,15 @@
     "lastTested": "2025-11-10"
   },
   {
-    "name": "Veins",
-    "appId": "0",
+    "name": "Vein",
+    "appId": "1857950",
     "status": "works",
     "notes": "Online features working",
     "lastTested": "2025-11-10"
   },
   {
     "name": "Tavern Keeper",
-    "appId": "0",
+    "appId": "436780",
     "status": "works",
     "notes": "Works correctly",
     "lastTested": "2025-11-10"
@@ -148,7 +169,7 @@
   },
   {
     "name": "Inzoi",
-    "appId": "0",
+    "appId": "2456740",
     "status": "fails",
     "notes": "Does not work with current version",
     "lastTested": "2025-11-10"
@@ -162,14 +183,14 @@
   },
   {
     "name": "PEAK",
-    "appId": "0",
+    "appId": "3527290",
     "status": "fails",
     "notes": "Not working",
     "lastTested": "2025-11-10"
   },
   {
     "name": "FBC: Fireworks",
-    "appId": "0",
+    "appId": "2272540",
     "status": "fails",
     "notes": "Does not work",
     "lastTested": "2025-11-10"
