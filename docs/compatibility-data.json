@@ -21,6 +21,62 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "Tekken 8",
+    "appId": "1778820",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working. Needs steamless.",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "Cozy Island",
+    "appId": "2918500",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working.",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "FORCED: Slightly Better Edition",
+    "appId": "249990",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working.",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "Restaurats",
+    "appId": "2870920",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working.",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "Time to Morp",
+    "appId": "977510",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working.",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "Cut that Wire",
+    "appId": "3498650",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working.",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "Mortal Kombat: Legacy Kollection",
+    "appId": "3454980",
+    "status": "fails",
+    "notes": "",
+    "lastTested": "2025-11-12"
+  },
+  {
+    "name": "Ghost of Tsushima Director's cut",
+    "appId": "2215430",
+    "status": "fails",
+    "notes": "PSN Servers",
+    "lastTested": "2025-11-12"
+  },
+  {
     "name": "Escape Simulator",
     "appId": "1435790",
     "status": "works",
