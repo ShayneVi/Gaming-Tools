@@ -1,226 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-  <title>Tools - GlobalFix Installer</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .tools-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - Global Online Fix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .tools-header {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
 
-    .tools-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        .tools-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
 
-    .tools-header h1 {
-      color: #667eea;
-      margin-bottom: 10px;
-    }
+        .tools-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
 
-    .tools-header p {
-      color: #666;
-      font-size: 1.1em;
-    }
+        .tools-content {
+            padding: 60px 0;
+        }
 
-    .tool-card {
-      background: white;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 20px;
-      transition: all 0.3s ease;
-    }
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
 
-    .tool-card:hover {
-      border-color: #667eea;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-      transform: translateY(-2px);
-    }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+        }
 
-    .tool-title {
-      color: #333;
-      font-size: 1.4em;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-    .tool-icon {
-      font-size: 1.5em;
-    }
+        .tool-icon {
+            font-size: 3rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+        }
 
-    .tool-description {
-      color: #666;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
+        .tool-info h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
 
-    .tool-download-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-size: 1em;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .tool-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
 
-    .tool-download-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-    }
+        .tool-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
 
-    .tool-download-btn:active {
-      transform: scale(0.98);
-    }
+        .tool-download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
+        .tool-download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
 
-    .back-link:hover {
-      color: #764ba2;
-      transform: translateX(-5px);
-    }
+        .tool-download-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
-    .download-status {
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      display: none;
-    }
+        .download-status {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1rem;
+            display: none;
+            font-weight: 500;
+        }
 
-    .download-status.success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-      display: block;
-    }
+        .download-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            display: block;
+        }
 
-    .download-status.error {
-      background: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-      display: block;
-    }
+        .download-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            display: block;
+        }
 
-    .download-status.loading {
-      background: #d1ecf1;
-      color: #0c5460;
-      border: 1px solid #bee5eb;
-      display: block;
-    }
-  </style>
+        .download-status.loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #bee5eb;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>GlobalFix Installer</h1>
-      <p class="subtitle">Automated Steam Game Modification Tool</p>
-      <nav class="header-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="#" class="nav-link active" id="toolsLink">Tools</a>
-        <a href="#" class="nav-link" id="compatibilityLink">Compatibility List</a>
-        <a href="#" class="nav-link" id="guideLink">Gaming Guide</a>
-      </nav>
-    </header>
-
-    <main>
-      <div class="tools-container">
-        <div class="tools-header">
-          <h1>🛠️ Useful Tools</h1>
-          <p>Download additional tools and utilities for your games</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-icon">🎮</span>
+                <span class="brand-text">ShayneVi</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link" id="backToHome">← Back to App</a>
+                <a href="tools.html" class="nav-link active">Tools</a>
+                <a href="compatibility.html" class="nav-link">Compatibility</a>
+                <a href="guide.html" class="nav-link">Gaming Guide</a>
+                <a href="https://github.com/ShayneVi" target="_blank" class="nav-link">GitHub</a>
+            </div>
         </div>
+    </nav>
 
-        <!-- Lobby Connect Tool -->
-        <div class="tool-card">
-          <div class="tool-title">
-            <span class="tool-icon">🌐</span>
-            <span>Lobby Connect</span>
-          </div>
-          <div class="tool-description">
-            <p>
-              A networking tool that helps you connect and play multiplayer games with friends.
-              Essential for online multiplayer functionality with modified games.
-            </p>
-          </div>
-          <button class="tool-download-btn" id="downloadLobbyConnect">
-            <span>⬇️</span>
-            <span>Download lobby_connect.zip</span>
-          </button>
-          <div id="lobbyConnectStatus" class="download-status"></div>
+    <!-- Header -->
+    <section class="tools-header">
+        <div class="container">
+            <h1 class="tools-title">🛠️ Useful Tools</h1>
+            <p class="tools-subtitle">Download additional tools and utilities for your games</p>
         </div>
+    </section>
 
-        <!-- Add more tools here in the future -->
-      </div>
-    </main>
-  </div>
+    <!-- Tools Content -->
+    <section class="tools-content">
+        <div class="container">
+            <!-- Lobby Connect Tool -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🌐</div>
+                    <div class="tool-info">
+                        <h2>Lobby Connect</h2>
+                        <p>Multiplayer Networking Tool</p>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    This tool is to use with Goldberg Steam Emu if a game doesn't have a LAN lobby. Read the game guide for more info.
+                </div>
+                <button class="tool-download-btn" id="downloadLobbyConnect">
+                    <span>⬇️</span>
+                    <span>Download lobby_connect.zip</span>
+                </button>
+                <div id="lobbyConnectStatus" class="download-status"></div>
+            </div>
 
-  <script>
-    const { ipcRenderer } = require('electron');
+            <!-- Add more tools here in the future -->
+        </div>
+    </section>
 
-    // Handle Lobby Connect download
-    document.getElementById('downloadLobbyConnect').addEventListener('click', async () => {
-      const statusEl = document.getElementById('lobbyConnectStatus');
-      const btn = document.getElementById('downloadLobbyConnect');
+    <script src="nav.js"></script>
+    <script>
+        // Handle Lobby Connect download
+        document.getElementById('downloadLobbyConnect').addEventListener('click', async () => {
+            const statusEl = document.getElementById('lobbyConnectStatus');
+            const btn = document.getElementById('downloadLobbyConnect');
 
-      statusEl.className = 'download-status loading';
-      statusEl.textContent = 'Downloading...';
-      btn.disabled = true;
+            statusEl.className = 'download-status loading';
+            statusEl.textContent = '⏳ Downloading...';
+            btn.disabled = true;
 
-      try {
-        const result = await ipcRenderer.invoke('download-lobby-connect');
+            try {
+                const result = await window.electronAPI.downloadLobbyConnect();
 
-        if (result.success) {
-          statusEl.className = 'download-status success';
-          statusEl.textContent = `✅ Downloaded successfully to: ${result.path}`;
-        } else {
-          statusEl.className = 'download-status error';
-          statusEl.textContent = `❌ Download failed: ${result.error}`;
-        }
-      } catch (error) {
-        statusEl.className = 'download-status error';
-        statusEl.textContent = `❌ Download failed: ${error.message}`;
-      } finally {
-        btn.disabled = false;
+                if (result.success) {
+                    statusEl.className = 'download-status success';
+                    statusEl.textContent = `✅ Downloaded successfully to: ${result.path}`;
 
-        // Clear status after 5 seconds
-        setTimeout(() => {
-          statusEl.className = 'download-status';
-          statusEl.textContent = '';
-        }, 5000);
-      }
-    });
+                    // Clear status after 10 seconds
+                    setTimeout(() => {
+                        statusEl.className = 'download-status';
+                        statusEl.textContent = '';
+                    }, 10000);
+                } else if (result.canceled) {
+                    // User canceled - don't show error, just reset
+                    statusEl.className = 'download-status';
+                    statusEl.textContent = '';
+                } else {
+                    statusEl.className = 'download-status error';
+                    statusEl.textContent = `❌ Download failed: ${result.error}`;
 
-    // Handle compatibility link
-    document.getElementById('compatibilityLink').addEventListener('click', (e) => {
-      e.preventDefault();
-      ipcRenderer.send('open-compatibility');
-    });
+                    // Clear status after 10 seconds
+                    setTimeout(() => {
+                        statusEl.className = 'download-status';
+                        statusEl.textContent = '';
+                    }, 10000);
+                }
+            } catch (error) {
+                statusEl.className = 'download-status error';
+                statusEl.textContent = `❌ Download failed: ${error.message}`;
 
-    // Handle guide link
-    document.getElementById('guideLink').addEventListener('click', (e) => {
-      e.preventDefault();
-      ipcRenderer.send('open-guide');
-    });
-  </script>
+                // Clear status after 10 seconds
+                setTimeout(() => {
+                    statusEl.className = 'download-status';
+                    statusEl.textContent = '';
+                }, 10000);
+            } finally {
+                btn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>

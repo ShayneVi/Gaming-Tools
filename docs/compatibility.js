@@ -21,13 +21,33 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load compatibility data from JSON file
 async function loadCompatibilityData() {
     try {
+        // Try loading from GitHub first (for live updates)
+        const githubUrl = 'https://raw.githubusercontent.com/ShayneVi/Gaming-Tools/main/docs/compatibility-data.json';
+
         // Add timestamp to prevent caching
         const timestamp = new Date().getTime();
+
+        try {
+            console.log('Attempting to load from GitHub...');
+            const githubResponse = await fetch(`${githubUrl}?v=${timestamp}`);
+            if (githubResponse.ok) {
+                const fetchedData = await githubResponse.json();
+                compatibilityData = fetchedData;
+                console.log(`✓ Loaded from GitHub (${compatibilityData.length} games)`);
+                populateTable(compatibilityData);
+                updateStats(compatibilityData);
+                return;
+            }
+        } catch (githubError) {
+            console.log('GitHub fetch failed, trying local file...');
+        }
+
+        // Fallback to local file if GitHub fails
         const response = await fetch(`compatibility-data.json?v=${timestamp}`);
         if (response.ok) {
             const fetchedData = await response.json();
             compatibilityData = fetchedData;
-            console.log(`✓ Loaded from compatibility-data.json (${compatibilityData.length} games)`);
+            console.log(`✓ Loaded from local file (${compatibilityData.length} games)`);
             populateTable(compatibilityData);
             updateStats(compatibilityData);
         } else {
@@ -268,5 +288,5 @@ async function loadFromXML(xmlUrl) {
 
 // Console info
 console.log('%c📊 Unsteam Compatibility Database', 'font-size: 16px; font-weight: bold; color: #667eea;');
-console.log('Data is loaded from compatibility-data.json');
-console.log('To update: Edit compatibility-data.json and push to GitHub - changes will appear automatically!');
+console.log('Data is loaded from GitHub (with local fallback)');
+console.log('To update: Edit compatibility-data.json on GitHub and push - changes will appear automatically for all users!');
