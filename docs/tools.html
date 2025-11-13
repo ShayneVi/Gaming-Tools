@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>Tools - GlobalFix Installer</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tools-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .tools-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tools-header h1 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+
+    .tools-header p {
+      color: #666;
+      font-size: 1.1em;
+    }
+
+    .tool-card {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .tool-title {
+      color: #333;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tool-icon {
+      font-size: 1.5em;
+    }
+
+    .tool-description {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .tool-download-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .tool-download-btn:active {
+      transform: scale(0.98);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #764ba2;
+      transform: translateX(-5px);
+    }
+
+    .download-status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      display: none;
+    }
+
+    .download-status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+
+    .download-status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    .download-status.loading {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>GlobalFix Installer</h1>
+      <p class="subtitle">Automated Steam Game Modification Tool</p>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link active" id="toolsLink">Tools</a>
+        <a href="#" class="nav-link" id="compatibilityLink">Compatibility List</a>
+        <a href="#" class="nav-link" id="guideLink">Gaming Guide</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="tools-container">
+        <div class="tools-header">
+          <h1>🛠️ Useful Tools</h1>
+          <p>Download additional tools and utilities for your games</p>
+        </div>
+
+        <!-- Lobby Connect Tool -->
+        <div class="tool-card">
+          <div class="tool-title">
+            <span class="tool-icon">🌐</span>
+            <span>Lobby Connect</span>
+          </div>
+          <div class="tool-description">
+            <p>
+              A networking tool that helps you connect and play multiplayer games with friends.
+              Essential for online multiplayer functionality with modified games.
+            </p>
+          </div>
+          <button class="tool-download-btn" id="downloadLobbyConnect">
+            <span>⬇️</span>
+            <span>Download lobby_connect.zip</span>
+          </button>
+          <div id="lobbyConnectStatus" class="download-status"></div>
+        </div>
+
+        <!-- Add more tools here in the future -->
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    // Handle Lobby Connect download
+    document.getElementById('downloadLobbyConnect').addEventListener('click', async () => {
+      const statusEl = document.getElementById('lobbyConnectStatus');
+      const btn = document.getElementById('downloadLobbyConnect');
+
+      statusEl.className = 'download-status loading';
+      statusEl.textContent = 'Downloading...';
+      btn.disabled = true;
+
+      try {
+        const result = await ipcRenderer.invoke('download-lobby-connect');
+
+        if (result.success) {
+          statusEl.className = 'download-status success';
+          statusEl.textContent = `✅ Downloaded successfully to: ${result.path}`;
+        } else {
+          statusEl.className = 'download-status error';
+          statusEl.textContent = `❌ Download failed: ${result.error}`;
+        }
+      } catch (error) {
+        statusEl.className = 'download-status error';
+        statusEl.textContent = `❌ Download failed: ${error.message}`;
+      } finally {
+        btn.disabled = false;
+
+        // Clear status after 5 seconds
+        setTimeout(() => {
+          statusEl.className = 'download-status';
+          statusEl.textContent = '';
+        }, 5000);
+      }
+    });
+
+    // Handle compatibility link
+    document.getElementById('compatibilityLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      ipcRenderer.send('open-compatibility');
+    });
+
+    // Handle guide link
+    document.getElementById('guideLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      ipcRenderer.send('open-guide');
+    });
+  </script>
+</body>
+</html>

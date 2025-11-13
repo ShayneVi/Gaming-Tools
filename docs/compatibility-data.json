@@ -35,6 +35,13 @@
     "lastTested": "2025-11-12"
   },
   {
+  "name": "Risk of Rain Returns",
+  "appId": "1337520",
+  "status": "works",
+  "notes": "Works perfectly, just unsteam",
+  "lastTested": "2025-11-13"
+  },
+  {
     "name": "FORCED: Slightly Better Edition",
     "appId": "249990",
     "status": "works",
