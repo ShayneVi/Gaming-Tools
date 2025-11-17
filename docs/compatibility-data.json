@@ -21,6 +21,13 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "PlateUp!",
+    "appId": "1599600",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
     "name": "Tekken 8",
     "appId": "1778820",
     "status": "works",
