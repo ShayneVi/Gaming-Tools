@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Fixes - GlobalFix</title>
+  <link rel="stylesheet" href="compatibility.css">
+  <style>
+    .welcome-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .welcome-section h1 {
+      margin: 0 0 15px 0;
+      font-size: 2em;
+    }
+
+    .welcome-section p {
+      margin: 0;
+      font-size: 1.1em;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .fixes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .fix-card {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .fix-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .fix-card-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .fix-card-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .fix-card-description {
+      color: #666;
+      line-height: 1.5;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Back Button -->
+    <a href="#" id="backToHome" style="display: inline-block; margin-bottom: 20px; color: #667eea; text-decoration: none; font-weight: 600;">
+      ← Back to Main App
+    </a>
+
+    <div class="welcome-section">
+      <h1>🔧 Special Fixes</h1>
+      <p>
+        In this section, you can find online fixes for special cases. These will require a bit of work,
+        so do read the tutorials if one is present.
+      </p>
+    </div>
+
+    <div class="fixes-grid">
+      <a href="repo-fix.html" class="fix-card">
+        <span class="fix-card-icon">🎮</span>
+        <div class="fix-card-title">R.E.P.O.</div>
+        <div class="fix-card-description">
+          Set up custom Photon servers for private multiplayer sessions. Includes BepInEx mod installation and configuration.
+        </div>
+      </a>
+
+      <a href="peak-fix.html" class="fix-card">
+        <span class="fix-card-icon">⛰️</span>
+        <div class="fix-card-title">PEAK</div>
+        <div class="fix-card-description">
+          Set up custom Photon servers for private multiplayer sessions. Requires Unsteam. Mod by kirigiri, updated by Claude & Shayne.
+        </div>
+      </a>
+
+      <!-- Future special fixes will go here -->
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+</body>
+</html>

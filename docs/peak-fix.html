@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEAK Custom Photon Server - GlobalFix</title>
+  <link rel="stylesheet" href="compatibility.css">
+  <style>
+    .tutorial-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .tutorial-header h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.5em;
+    }
+
+    .tutorial-section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .tutorial-section h2 {
+      color: #667eea;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+
+    .tutorial-section h3 {
+      color: #333;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .tutorial-steps {
+      counter-reset: step-counter;
+      list-style: none;
+      padding: 0;
+    }
+
+    .tutorial-steps li {
+      counter-increment: step-counter;
+      margin-bottom: 25px;
+      padding-left: 60px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .tutorial-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1em;
+      font-family: 'Courier New', monospace;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .input-group small {
+      display: block;
+      margin-top: 5px;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .btn-primary-peak {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .btn-primary-peak:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-primary-peak:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary-peak {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .btn-secondary-peak:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3);
+    }
+
+    .alert {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.success {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      display: block;
+    }
+
+    .alert.error {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      display: block;
+    }
+
+    .alert.info {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+      color: #0c5460;
+      display: block;
+    }
+
+    .note-box {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+
+    .note-box strong {
+      color: #856404;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .note-box p {
+      margin: 0;
+      color: #856404;
+    }
+
+    .warning-box {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+
+    .warning-box strong {
+      color: #721c24;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .warning-box p {
+      margin: 0;
+      color: #721c24;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #e83e8c;
+    }
+
+    .credits-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .credits-box strong {
+      display: block;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Back Button -->
+    <a href="special-fixes.html" style="display: inline-block; margin-bottom: 20px; color: #667eea; text-decoration: none; font-weight: 600;">
+      ← Back to Special Fixes
+    </a>
+
+    <div class="tutorial-header">
+      <h1>📡 TUTORIAL</h1>
+      <p style="font-size: 1.2em; margin: 10px 0 0 0;">PEAK Custom Photon Server Setup</p>
+    </div>
+
+    <!-- Important Notice -->
+    <div class="warning-box">
+      <strong>⚠️ IMPORTANT REQUIREMENT:</strong>
+      <p>This fix requires <strong>Unsteam emulation</strong> to work! You must apply the Unsteam fix to PEAK from the main GlobalFix interface before using this custom Photon server fix. Without Unsteam, you won't be able to host games.</p>
+    </div>
+
+    <!-- Credits -->
+    <div class="credits-box">
+      <strong>🙏 Credits</strong>
+      <p>Original PhotonRedirector mod by <strong>kirigiri</strong></p>
+      <p>Updated for latest PEAK version by <strong>Claude & Shayne</strong></p>
+    </div>
+
+    <!-- Tutorial Section -->
+    <div class="tutorial-section">
+      <h2>🎯 What This Does</h2>
+      <p>
+        This fix allows you to create your own private multiplayer network for PEAK using Photon's cloud infrastructure.
+        Only you and your friends (who have your custom App IDs) will be able to join your games.
+      </p>
+
+      <div class="note-box">
+        <strong>⚠️ Important Note:</strong>
+        <p>Only the <strong>host</strong> needs to create Photon apps and App IDs. Your friends just need the same App IDs to connect to your network!</p>
+      </div>
+    </div>
+
+    <!-- Step 1: Create Photon Account -->
+    <div class="tutorial-section">
+      <h2>Step 1: Create a Photon Account</h2>
+      <ol class="tutorial-steps">
+        <li>
+          Go to <a href="https://www.photonengine.com/" target="_blank" style="color: #667eea; font-weight: 600;">https://www.photonengine.com/</a>
+        </li>
+        <li>
+          Click on <strong>"Sign Up"</strong> in the top right corner
+        </li>
+        <li>
+          Fill in your email and create a password, then click <strong>"Create Account"</strong>
+        </li>
+        <li>
+          Verify your email address (check your inbox for a confirmation email)
+        </li>
+        <li>
+          Log in to your new Photon account
+        </li>
+      </ol>
+    </div>
+
+    <!-- Step 2: Create Photon Apps -->
+    <div class="tutorial-section">
+      <h2>Step 2: Create Your Photon Apps</h2>
+
+      <h3>Create the Realtime App</h3>
+      <ol class="tutorial-steps">
+        <li>
+          Once logged in, go to your <strong>Dashboard</strong>
+        </li>
+        <li>
+          Click on <strong>"Create a New App"</strong>
+        </li>
+        <li>
+          For <strong>Select Photon SDK</strong>, choose <code>Realtime</code>
+        </li>
+        <li>
+          Give it a name (e.g., "PEAK Custom Server")
+        </li>
+        <li>
+          Click <strong>"Create"</strong>
+        </li>
+        <li>
+          You'll see your new app with an <strong>App ID</strong> (a long string like: <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>)
+        </li>
+        <li>
+          Simply <strong>click on the App ID</strong> on the app card - it will highlight the entire ID
+        </li>
+        <li>
+          Press <strong>Ctrl+C</strong> to copy it!
+        </li>
+      </ol>
+
+      <h3>Create the Voice App</h3>
+      <ol class="tutorial-steps">
+        <li>
+          Click <strong>"Create a New App"</strong> again
+        </li>
+        <li>
+          For <strong>Select Photon SDK</strong>, choose <code>Voice</code>
+        </li>
+        <li>
+          Give it a name (e.g., "PEAK Voice")
+        </li>
+        <li>
+          Click <strong>"Create"</strong>
+        </li>
+        <li>
+          <strong>Click on the App ID</strong> on the Voice app card to highlight it, then <strong>Ctrl+C</strong> to copy
+        </li>
+      </ol>
+
+      <div class="note-box">
+        <strong>💡 What is CCU?</strong>
+        <p>CCU = Concurrent Users. The free plan gives you 20 CCU per app, which means up to 20 players can connect at the same time. Perfect for playing with friends!</p>
+      </div>
+    </div>
+
+    <!-- Step 3: Enter App IDs -->
+    <div class="tutorial-section">
+      <h2>Step 3: Enter Your App IDs</h2>
+      <p>Now that you have both App IDs, enter them below:</p>
+
+      <div class="input-group">
+        <label for="realtimeAppId">Photon Realtime App ID:</label>
+        <input
+          type="text"
+          id="realtimeAppId"
+          placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+          autocomplete="off"
+        >
+        <small>This is the App ID from your Photon Realtime app</small>
+      </div>
+
+      <div class="input-group">
+        <label for="voiceAppId">Photon Voice App ID:</label>
+        <input
+          type="text"
+          id="voiceAppId"
+          placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+          autocomplete="off"
+        >
+        <small>This is the App ID from your Photon Voice app</small>
+      </div>
+
+      <div id="alertBox" class="alert"></div>
+
+      <button id="downloadFixBtn" class="btn-primary-peak">
+        📥 Download PEAK Fix
+      </button>
+
+      <button id="unfixBtn" class="btn-secondary-peak">
+        🗑️ Remove PEAK Fix
+      </button>
+    </div>
+
+    <!-- Step 4: Share with Friends -->
+    <div class="tutorial-section">
+      <h2>Step 4: Share App IDs with Friends</h2>
+      <p>
+        For your friends to join your private network, they need to:
+      </p>
+      <ol class="tutorial-steps">
+        <li>
+          Install the same PEAK fix using this tool (click "Download PEAK Fix" above)
+        </li>
+        <li>
+          Enter the <strong>same Realtime and Voice App IDs</strong> that you created
+        </li>
+        <li>
+          Make sure they also have <strong>Unsteam applied to PEAK</strong>
+        </li>
+        <li>
+          Launch PEAK and create/join lobbies as normal
+        </li>
+      </ol>
+
+      <div class="note-box">
+        <strong>🎮 How to Play:</strong>
+        <p>Once everyone has Unsteam + this fix installed with your App IDs, just launch PEAK normally and create/join lobbies. You'll all be connected through your custom Photon network!</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    const realtimeAppIdInput = document.getElementById('realtimeAppId');
+    const voiceAppIdInput = document.getElementById('voiceAppId');
+    const downloadFixBtn = document.getElementById('downloadFixBtn');
+    const unfixBtn = document.getElementById('unfixBtn');
+    const alertBox = document.getElementById('alertBox');
+
+    function showAlert(message, type) {
+      alertBox.className = `alert ${type}`;
+      alertBox.textContent = message;
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideAlert() {
+      alertBox.className = 'alert';
+      alertBox.textContent = '';
+    }
+
+    // Download PEAK Fix
+    downloadFixBtn.addEventListener('click', async () => {
+      const realtimeAppId = realtimeAppIdInput.value.trim();
+      const voiceAppId = voiceAppIdInput.value.trim();
+
+      if (!realtimeAppId || !voiceAppId) {
+        showAlert('Please enter both Realtime and Voice App IDs', 'error');
+        return;
+      }
+
+      // Basic validation for App ID format (UUID)
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      if (!uuidRegex.test(realtimeAppId) || !uuidRegex.test(voiceAppId)) {
+        showAlert('Invalid App ID format. App IDs should be in UUID format (e.g., xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)', 'error');
+        return;
+      }
+
+      downloadFixBtn.disabled = true;
+      downloadFixBtn.textContent = '⏳ Installing...';
+      hideAlert();
+
+      try {
+        const result = await window.electronAPI.installPeakFix({
+          realtimeAppId: realtimeAppId,
+          voiceAppId: voiceAppId
+        });
+
+        if (result.success) {
+          showAlert('✓ PEAK fix installed successfully! You can now launch the game.', 'success');
+        } else {
+          showAlert(`Installation failed: ${result.error}`, 'error');
+        }
+      } catch (error) {
+        showAlert(`Error: ${error.message}`, 'error');
+      } finally {
+        downloadFixBtn.disabled = false;
+        downloadFixBtn.textContent = '📥 Download PEAK Fix';
+      }
+    });
+
+    // Unfix PEAK
+    unfixBtn.addEventListener('click', async () => {
+      if (!confirm('This will remove all PEAK fix files from your game folder. Continue?')) {
+        return;
+      }
+
+      unfixBtn.disabled = true;
+      unfixBtn.textContent = '⏳ Removing...';
+      hideAlert();
+
+      try {
+        const result = await window.electronAPI.unfixPeak();
+
+        if (result.success) {
+          showAlert('✓ PEAK fix removed successfully!', 'success');
+        } else {
+          showAlert(`Unfix failed: ${result.error}`, 'error');
+        }
+      } catch (error) {
+        showAlert(`Error: ${error.message}`, 'error');
+      } finally {
+        unfixBtn.disabled = false;
+        unfixBtn.textContent = '🗑️ Remove PEAK Fix';
+      }
+    });
+  </script>
+</body>
+</html>

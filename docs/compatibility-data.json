@@ -77,6 +77,13 @@
     "lastTested": "2025-11-12"
   },
   {
+    "name": "SnowRunner",
+    "appId": "1465360",
+    "status": "fails",
+    "notes": "Doesn't use steam servers. Uses mods.io and needs to be connected.",
+    "lastTested": "2025-11-12"
+  },
+  {
     "name": "Ghost of Tsushima Director's cut",
     "appId": "2215430",
     "status": "fails",
@@ -87,8 +94,15 @@
     "name": "Escape Simulator",
     "appId": "1435790",
     "status": "works",
-    "notes": "Online multiplayer confirmed working",
+    "notes": "Online multiplayer confirmed working. Needs invite with code",
     "lastTested": "2025-11-11"
+  },
+  {
+    "name": "Escape Simulator 2",
+    "appId": "2879840",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working. Needs invite with code",
+    "lastTested": "2025-11-14"
   },
   {
     "name": "A World of Keflings",
