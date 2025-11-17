@@ -28,6 +28,55 @@
     "lastTested": "2025-11-17"
   },
   {
+    "name": "MX vs ATV Legends",
+    "appId": "1205970",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
+    "name": "MX vs ATV All Out",
+    "appId": "520940",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
+    "name": "RIDE 3",
+    "appId": "759740",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
+    "name": "Gang Beasts",
+    "appId": "285900",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
+    "name": "MotoGP™18",
+    "appId": "775900",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
+    "name": "The Texas Chain Saw Massacre",
+    "appId": "1433140",
+    "status": "fails",
+    "notes": "Uses dedicated servers",
+    "lastTested": "2025-11-17"
+  },
+  {
+    "name": "Dollhouse of Dead",
+    "appId": "2977810",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-17"
+  },
+  {
     "name": "Tekken 8",
     "appId": "1778820",
     "status": "works",
