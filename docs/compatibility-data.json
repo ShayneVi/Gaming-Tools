@@ -21,6 +21,20 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "Dinkum",
+    "appId": "1062520",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-24"
+  },
+  {
+    "name": "Windblown",
+    "appId": "1911610",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working. you need to log in with an email and password to play normally",
+    "lastTested": "2025-11-19"
+  },
+  {
     "name": "PlateUp!",
     "appId": "1599600",
     "status": "works",
@@ -68,6 +82,13 @@
     "status": "fails",
     "notes": "Uses dedicated servers",
     "lastTested": "2025-11-17"
+  },
+  {
+    "name": "The Spell Brigade",
+    "appId": "2904000",
+    "status": "fails",
+    "notes": "",
+    "lastTested": "2025-11-19"
   },
   {
     "name": "Dollhouse of Dead",
