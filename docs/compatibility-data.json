@@ -107,8 +107,8 @@
   {
     "name": "Cozy Island",
     "appId": "2918500",
-    "status": "works",
-    "notes": "Online multiplayer confirmed working.",
+    "status": "fails",
+    "notes": " dedicated server.",
     "lastTested": "2025-11-12"
   },
   {
