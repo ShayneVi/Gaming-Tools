@@ -21,6 +21,41 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "MXGP PRO",
+    "appId": "798290",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-30"
+  },
+  {
+    "name": "Monster Energy Supercross - The Official Videogame",
+    "appId": "711750",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-30"
+  },
+  {
+    "name": "Monster Energy Supercross - The Official Videogame 2",
+    "appId": "882020",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-30"
+  },
+  {
+    "name": "RiMS Racing",
+    "appId": "1346010",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-30"
+  },
+  {
+    "name": "MXGP 2019 - The Official Motocross Videogame",
+    "appId": "1018160",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-30"
+  },
+  {
     "name": "Dinkum",
     "appId": "1062520",
     "status": "works",
