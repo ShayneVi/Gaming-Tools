@@ -28,6 +28,13 @@
     "lastTested": "2025-11-30"
   },
   {
+    "name": "Shatterland",
+    "appId": "3721680",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-02"
+  },
+  {
     "name": "Monster Energy Supercross - The Official Videogame",
     "appId": "711750",
     "status": "works",
