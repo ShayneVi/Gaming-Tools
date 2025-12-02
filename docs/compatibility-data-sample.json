@@ -35,4 +35,13 @@
     "lastTested": "2025-11-08",
     "testedBy": "community"
   }
+  {
+  "name": "Mount & Blade II: Bannerlord - War Sails",
+  "appId": "2927200",
+  "status": "works",
+  "notes": "the dlc not avalibel",
+  "lastTested": "2025-12-2"
+}
+
 ]
+
