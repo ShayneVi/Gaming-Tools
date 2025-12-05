@@ -28,6 +28,13 @@
     "lastTested": "2025-11-05"
   },
   {
+    "name": "Don't Scream Together",
+    "appId": "2692990",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-05"
+  },
+  {
     "name": "AFTERBLAST",
     "appId": "1338490",
     "status": "works",
