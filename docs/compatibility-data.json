@@ -21,6 +21,55 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "Raft",
+    "appId": "648800",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-05"
+  },
+  {
+    "name": "AFTERBLAST",
+    "appId": "1338490",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-05"
+  },
+  {
+    "name": "Co-op Kaiju Horror Cooking",
+    "appId": "3139570",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-05"
+  },
+  {
+    "name": "The horde wants you dead",
+    "appId": "3552820",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working. Need to invite with Squad Code.",
+    "lastTested": "2025-11-05"
+  },
+  {
+    "name": "Pizza Deathlivery",
+    "appId": "3697560",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-11-05"
+  },
+  {
+    "name": "Cloudheim",
+    "appId": "2070270",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-11-05"
+  },
+  {
+    "name": "Explosive Odds",
+    "appId": "3674980",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-11-05"
+  },
+  {
     "name": "MXGP PRO",
     "appId": "798290",
     "status": "works",
@@ -30,6 +79,13 @@
   {
     "name": "Shatterland",
     "appId": "3721680",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-02"
+  },
+  {
+    "name": "Pizza Restaurant Together",
+    "appId": "3896380",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
     "lastTested": "2025-12-02"
