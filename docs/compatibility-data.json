@@ -14,6 +14,13 @@
     "lastTested": "2025-11-10"
   },
   {
+  "name": "Mount & Blade II: Bannerlord - War Sails",
+  "appId": "2927200",
+  "status": "works",
+  "notes": "Online multiplayer confirmed working. The dlc not avalible",
+  "lastTested": "2025-12-2"
+  },
+  {
     "name": "RV There Yet?",
     "appId": "3949040",
     "status": "works",
