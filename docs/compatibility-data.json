@@ -28,60 +28,123 @@
     "lastTested": "2025-11-11"
   },
   {
+    "name": "CRYO",
+    "appId": "2564910",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "Side Effects",
+    "appId": "3799100",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "What the Fog",
+    "appId": "2139020",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "Storage Hunter",
+    "appId": "1442430",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "LockYourDoor",
+    "appId": "3004140",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working. Must use steamless also.",
+    "lastTested": "2025-12-06"
+  },
+  {
     "name": "Raft",
     "appId": "648800",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "Don't Scream Together",
     "appId": "2692990",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "AFTERBLAST",
     "appId": "1338490",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "Co-op Kaiju Horror Cooking",
     "appId": "3139570",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "The horde wants you dead",
     "appId": "3552820",
     "status": "works",
     "notes": "Online multiplayer confirmed working. Need to invite with Squad Code.",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "Pizza Deathlivery",
     "appId": "3697560",
     "status": "works",
     "notes": "Online multiplayer confirmed working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "Cloudheim",
     "appId": "2070270",
     "status": "fails",
     "notes": "Online multiplayer not working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
+  },
+  {
+    "name": "Cursed Companions",
+    "appId": "3265230",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "MARVEL Cosmic Invasion",
+    "appId": "2753970",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "Storebound",
+    "appId": "3417410",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "Double Dragon Revive",
+    "appId": "3012220",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-06"
   },
   {
     "name": "Explosive Odds",
     "appId": "3674980",
     "status": "fails",
     "notes": "Online multiplayer not working",
-    "lastTested": "2025-11-05"
+    "lastTested": "2025-12-05"
   },
   {
     "name": "MXGP PRO",
