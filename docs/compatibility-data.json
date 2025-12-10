@@ -35,6 +35,34 @@
     "lastTested": "2025-12-06"
   },
   {
+    "name": "USAC: Code Breach",
+    "appId": "1886070",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-09"
+  },
+  {
+    "name": "Plants vs. Zombies™: Replanted",
+    "appId": "3654560",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-09"
+  },
+  {
+    "name": "DEVOUR",
+    "appId": "1274570",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-09"
+  },
+  {
+    "name": "C.A.S.T.",
+    "appId": "3140620",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-09"
+  },
+  {
     "name": "Side Effects",
     "appId": "3799100",
     "status": "works",
@@ -110,6 +138,20 @@
     "status": "fails",
     "notes": "Online multiplayer not working",
     "lastTested": "2025-12-05"
+  },
+  {
+    "name": "Stuck Together",
+    "appId": "3295360",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-09"
+  },
+  {
+    "name": "SUPER BOMBERMAN R2",
+    "appId": "1913740",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-09"
   },
   {
     "name": "Cursed Companions",
