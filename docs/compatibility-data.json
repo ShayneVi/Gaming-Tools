@@ -35,6 +35,13 @@
     "lastTested": "2025-12-06"
   },
   {
+    "name": "Exit Together",
+    "appId": "3333740",
+    "status": "works",
+    "notes": "Online multiplayer confirmed working",
+    "lastTested": "2025-12-11"
+  },
+  {
     "name": "USAC: Code Breach",
     "appId": "1886070",
     "status": "works",
@@ -170,6 +177,13 @@
   {
     "name": "Storebound",
     "appId": "3417410",
+    "status": "fails",
+    "notes": "Online multiplayer not working",
+    "lastTested": "2025-12-06"
+  },
+  {
+    "name": "Section 13",
+    "appId": "2111870",
     "status": "fails",
     "notes": "Online multiplayer not working",
     "lastTested": "2025-12-06"
